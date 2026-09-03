@@ -225,14 +225,27 @@
   /* ---------- PLANS ---------- */
   .price-table{border-top:1px solid var(--line);}
   .price-row{
-    display:grid; grid-template-columns:1.6fr 0.9fr 2.5fr;
-    gap:24px; padding:26px 0; border-bottom:1px solid var(--line); align-items:start;
+    border-bottom:1px solid var(--line);
   }
-  .price-row .p-name{font-family:'Fraunces',serif; font-size:20px; font-weight:400; color:var(--ink);}
-  .price-row .p-name small{display:block; font-family:'Public Sans',sans-serif; font-size:13px; color:var(--text-soft); margin-top:4px; font-weight:400;}
-  .price-row .p-cost{font-size:19px; color:var(--blush-deep); font-family:'Fraunces',serif; white-space:nowrap;}
-  .price-row .p-cost small{display:block; font-family:'Public Sans',sans-serif; font-size:12px; color:var(--text-soft); margin-top:2px;}
-  .price-row .p-details{font-size:14.5px; color:var(--text-soft);}
+  .price-toggle{
+    width:100%; display:grid; grid-template-columns:1fr auto; gap:24px;
+    padding:26px 0; border:0; background:none; color:inherit; text-align:left;
+    cursor:pointer; align-items:start; font:inherit;
+  }
+  .price-toggle:focus-visible{outline:2px solid var(--blush-deep); outline-offset:4px;}
+  .price-toggle .p-name{display:block;}
+  .price-toggle .p-name{font-family:'Fraunces',serif; font-size:20px; font-weight:400; color:var(--ink);}
+  .price-toggle .p-name small{display:block; font-family:'Public Sans',sans-serif; font-size:13px; color:var(--text-soft); margin-top:4px; font-weight:400;}
+  .price-plus{font-size:28px; line-height:1; font-weight:300; color:var(--blush-deep); transition:transform .3s ease;}
+  .price-toggle[aria-expanded="true"] .price-plus{transform:rotate(45deg);}
+  .price-row .p-details{
+    max-height:0; padding:0; opacity:0; overflow:hidden;
+    font-size:14.5px; color:var(--text-soft);
+    transition:max-height .45s ease, padding .45s ease, opacity .3s ease;
+  }
+  .price-row.open .p-details{max-height:320px; padding:0 0 26px; opacity:1;}
+  .price-row .p-details .p-cost{font-size:19px; color:var(--blush-deep); font-family:'Fraunces',serif; white-space:nowrap; margin-bottom:10px;}
+  .price-row .p-details .p-cost small{display:block; font-family:'Public Sans',sans-serif; font-size:12px; color:var(--text-soft); margin-top:2px;}
   .price-row .p-details ul{margin-top:2px;}
   .price-row .p-details li{position:relative; padding-left:16px; margin-bottom:5px;}
   .price-row .p-details li::before{content:'—'; position:absolute; left:0; color:var(--gold);}
@@ -298,7 +311,8 @@
     .cat-card{height:110px; flex:none !important;}
     .cat-card.expanded{height:400px;}
     .cat-strip{flex-direction:column;}
-    .price-row{grid-template-columns:1fr; gap:8px;}
+    .price-toggle{gap:8px 18px;}
+    .price-plus{align-self:center;}
     .plans-grid{grid-template-columns:1fr;}
     .plan-col{border-left:none; border-top:1px solid var(--line);}
     .plan-col:first-child{border-top:none;}
@@ -483,9 +497,12 @@
 
     <div class="price-table">
       <div class="price-row">
-        <div class="p-name">Newborn Session<small>60–90 minutes, in-studio or at home</small></div>
-        <div class="p-cost">$280<small>per session</small></div>
-        <div class="p-details">
+        <button class="price-toggle" type="button" aria-expanded="false" aria-controls="price-newborn">
+          <span class="p-name">Newborn Session<small>60–90 minutes, in-studio or at home</small></span>
+          <span class="price-plus" aria-hidden="true">+</span>
+        </button>
+        <div class="p-details" id="price-newborn" aria-hidden="true">
+          <div class="p-cost">$280<small>per session</small></div>
           <ul>
             <li>15 professionally edited digital images</li>
             <li>One 8×10 fine-art print included</li>
@@ -495,9 +512,12 @@
         </div>
       </div>
       <div class="price-row">
-        <div class="p-name">Maternity Session<small>45–60 minutes, studio or golden-hour outdoor</small></div>
-        <div class="p-cost">$220<small>per session</small></div>
-        <div class="p-details">
+        <button class="price-toggle" type="button" aria-expanded="false" aria-controls="price-maternity">
+          <span class="p-name">Maternity Session<small>45–60 minutes, studio or golden-hour outdoor</small></span>
+          <span class="price-plus" aria-hidden="true">+</span>
+        </button>
+        <div class="p-details" id="price-maternity" aria-hidden="true">
+          <div class="p-cost">$220<small>per session</small></div>
           <ul>
             <li>12 edited digital images, online gallery</li>
             <li>Up to two outfit changes</li>
@@ -506,9 +526,12 @@
         </div>
       </div>
       <div class="price-row">
-        <div class="p-name">Family Portrait Session<small>60 minutes, outdoor location or your home</small></div>
-        <div class="p-cost">$260<small>per session</small></div>
-        <div class="p-details">
+        <button class="price-toggle" type="button" aria-expanded="false" aria-controls="price-family">
+          <span class="p-name">Family Portrait Session<small>60 minutes, outdoor location or your home</small></span>
+          <span class="price-plus" aria-hidden="true">+</span>
+        </button>
+        <div class="p-details" id="price-family" aria-hidden="true">
+          <div class="p-cost">$260<small>per session</small></div>
           <ul>
             <li>20 edited digital images</li>
             <li>Complimentary pre-session styling call</li>
@@ -517,9 +540,12 @@
         </div>
       </div>
       <div class="price-row">
-        <div class="p-name">Kids &amp; Milestone Session<small>45 minutes, studio or on location</small></div>
-        <div class="p-cost">$200<small>per session</small></div>
-        <div class="p-details">
+        <button class="price-toggle" type="button" aria-expanded="false" aria-controls="price-kids">
+          <span class="p-name">Kids &amp; Milestone Session<small>45 minutes, studio or on location</small></span>
+          <span class="price-plus" aria-hidden="true">+</span>
+        </button>
+        <div class="p-details" id="price-kids" aria-hidden="true">
+          <div class="p-cost">$200<small>per session</small></div>
           <ul>
             <li>10 edited digital images</li>
             <li>Cake smash setup available on request (+$40)</li>
@@ -527,9 +553,12 @@
         </div>
       </div>
       <div class="price-row">
-        <div class="p-name">Wedding Day Coverage<small>up to 8 hours, single or double shooter</small></div>
-        <div class="p-cost">$1,800<small>starting price</small></div>
-        <div class="p-details">
+        <button class="price-toggle" type="button" aria-expanded="false" aria-controls="price-wedding">
+          <span class="p-name">Wedding Day Coverage<small>up to 8 hours, single or double shooter</small></span>
+          <span class="price-plus" aria-hidden="true">+</span>
+        </button>
+        <div class="p-details" id="price-wedding" aria-hidden="true">
+          <div class="p-cost">$1,800<small>starting price</small></div>
           <ul>
             <li>400+ edited images, private online gallery</li>
             <li>Second photographer available (+$450)</li>
@@ -538,9 +567,12 @@
         </div>
       </div>
       <div class="price-row">
-        <div class="p-name">Corporate &amp; Event Coverage<small>up to 3 hours on-site</small></div>
-        <div class="p-cost">$450<small>starting price</small></div>
-        <div class="p-details">
+        <button class="price-toggle" type="button" aria-expanded="false" aria-controls="price-events">
+          <span class="p-name">Corporate &amp; Event Coverage<small>up to 3 hours on-site</small></span>
+          <span class="price-plus" aria-hidden="true">+</span>
+        </button>
+        <div class="p-details" id="price-events" aria-hidden="true">
+          <div class="p-cost">$450<small>starting price</small></div>
           <ul>
             <li>Edited highlight gallery within 5 business days</li>
             <li>Extra hours billed at $110/hour</li>
@@ -718,6 +750,31 @@
         stopCarousel();
       });
     }
+  });
+
+  // Session pricing accordion: keep one detail panel open at a time.
+  const priceRows = document.querySelectorAll('.price-row');
+  priceRows.forEach(row => {
+    const toggle = row.querySelector('.price-toggle');
+    const details = row.querySelector('.p-details');
+
+    toggle.addEventListener('click', () => {
+      const shouldOpen = toggle.getAttribute('aria-expanded') !== 'true';
+
+      priceRows.forEach(otherRow => {
+        const otherToggle = otherRow.querySelector('.price-toggle');
+        const otherDetails = otherRow.querySelector('.p-details');
+        otherRow.classList.remove('open');
+        otherToggle.setAttribute('aria-expanded', 'false');
+        otherDetails.setAttribute('aria-hidden', 'true');
+      });
+
+      if (shouldOpen) {
+        row.classList.add('open');
+        toggle.setAttribute('aria-expanded', 'true');
+        details.setAttribute('aria-hidden', 'false');
+      }
+    });
   });
 
   // Mobile navigation drawer
