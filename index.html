@@ -75,7 +75,12 @@
   header.scrolled .brand-mark{color:var(--ink);}
   .brand-name{font-family:'Fraunces', serif; font-size:17px; color:var(--ivory); letter-spacing:0.01em;}
   header.scrolled .brand-name{color:var(--ink);}
-  .brand-name span{display:block; font-family:'Public Sans',sans-serif; font-size:10.5px; color:var(--blush); letter-spacing:0.14em; margin-top:1px;}
+  .brand-name span{
+    display:block; font-family:'Public Sans',sans-serif; font-size:11px; font-weight:600;
+    color:#F0D6A0; letter-spacing:0.12em; margin-top:1px;
+    text-shadow:0 1px 8px rgba(10,12,18,0.65);
+  }
+  header.scrolled .brand-name span{color:var(--blush-deep); text-shadow:none;}
 
   nav ul{display:flex; gap:36px;}
   nav a{
@@ -126,18 +131,21 @@
   }
   .hero::before{
     content:''; position:absolute; inset:0;
-    background:linear-gradient(180deg, rgba(28,33,48,0.15) 0%, rgba(28,33,48,0.1) 40%, rgba(20,23,33,0.82) 100%);
+    background:
+      linear-gradient(90deg, rgba(20,23,33,0.48) 0%, rgba(20,23,33,0.18) 58%, rgba(20,23,33,0.04) 100%),
+      linear-gradient(180deg, rgba(28,33,48,0.18) 0%, rgba(28,33,48,0.12) 38%, rgba(20,23,33,0.9) 100%);
   }
-  .hero-content{position:relative; z-index:2; padding-bottom:88px; max-width:680px;}
+  .hero-content{
+    position:relative; z-index:2; padding-bottom:88px; max-width:680px;
+    text-shadow:0 2px 18px rgba(10,12,18,0.42);
+  }
   .hero-eyebrow{
-    font-size:13.5px; letter-spacing:0.04em; color:var(--gold); margin-bottom:22px;
+    font-size:13.5px; letter-spacing:0.04em; color:#E1C875; margin-bottom:22px;
     font-style:italic; font-family:'Fraunces', serif;
   }
-  .hero h1{
-    font-size:clamp(42px, 6vw, 74px); color:var(--ivory); font-weight:400;
-  }
-  .hero h1 em{font-style:italic; color:var(--blush);}
-  .hero p{margin-top:22px; font-size:17px; color:rgba(250,247,241,0.82); max-width:480px;}
+  .hero h1{font-size:clamp(42px, 6vw, 74px); color:#FFFFFF; font-weight:400;}
+  .hero h1 em{font-style:italic; color:#E3A395;}
+  .hero p{margin-top:22px; font-size:17px; color:rgba(255,255,255,0.94); max-width:480px;}
   .hero-actions{display:flex; gap:16px; margin-top:38px; flex-wrap:wrap;}
   .btn{
     display:inline-block; padding:14px 30px; font-size:14px; border-radius:2px;
@@ -334,7 +342,7 @@
 </aside>
 
 <section class="hero">
-  <img class="hero-img" src="https://picsum.photos/seed/nevjon-hero-2026/1800/1100" alt="A quiet family portrait moment">
+  <img class="hero-img" src="images/NJV03997.jpg" alt="A quiet family portrait moment">
   <div class="wrap">
     <div class="hero-content">
       <div class="hero-eyebrow">Portrait &amp; Milestone Photography</div>
