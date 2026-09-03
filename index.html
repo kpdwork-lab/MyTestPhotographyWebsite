@@ -175,6 +175,7 @@
   .portfolio-row{display:flex; gap:14px; height:480px;}
   .cat-card{
     position:relative; flex:1; overflow:hidden; cursor:pointer;
+    touch-action:manipulation;
     transition:flex 0.65s cubic-bezier(.16,.8,.28,1);
     background:var(--ink);
   }
@@ -660,7 +661,7 @@
 
   // Category carousel: works for hover (desktop) and tap (touch/mobile)
   const cards = document.querySelectorAll('.cat-card');
-  const isTouch = window.matchMedia('(hover: none)').matches;
+  const isTouch = window.matchMedia('(hover: none), (pointer: coarse)').matches;
 
   cards.forEach(card => {
     const images = [...card.querySelectorAll('.cat-strip img')];
