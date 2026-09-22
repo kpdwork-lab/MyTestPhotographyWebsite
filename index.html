@@ -107,7 +107,15 @@
     background:var(--ivory); box-shadow:-18px 0 45px rgba(28,33,48,0.16);
     transform:translateX(100%); transition:transform .4s cubic-bezier(.16,.8,.28,1);
   }
-  .menu-drawer h2{font-size:30px; font-weight:400; margin-bottom:30px;}
+  .menu-drawer-head{display:flex; align-items:center; justify-content:space-between; margin-bottom:30px;}
+  .menu-drawer h2{font-size:30px; font-weight:400;}
+  .menu-close{
+    width:38px; height:38px; display:flex; align-items:center; justify-content:center;
+    border:1px solid var(--line); border-radius:50%; background:none; color:var(--ink);
+    font-size:25px; line-height:1; cursor:pointer;
+  }
+  .menu-close:hover{background:var(--paper);}
+  .menu-close:focus-visible{outline:2px solid var(--blush-deep); outline-offset:3px;}
   .menu-drawer ul{border-top:1px solid var(--line);}
   .menu-drawer li{border-bottom:1px solid var(--line);}
   .menu-drawer a{
@@ -293,6 +301,42 @@
   .contact h2{color:var(--ivory); font-size:clamp(30px,4.2vw,48px); font-weight:400; max-width:640px; margin:0 auto 26px;}
   .contact p{color:rgba(250,247,241,0.68); max-width:480px; margin:0 auto 38px; font-size:16px;}
   .contact-links{display:flex; gap:18px; justify-content:center; flex-wrap:wrap;}
+  .enquire-wrap{margin:52px auto 0; max-width:560px; padding-top:34px; border-top:1px solid var(--line-light);}
+  .enquire-label{display:block; color:var(--gold); font-family:'Fraunces',serif; font-style:italic; font-size:15px; margin-bottom:14px;}
+  .enquire-btn{display:inline-flex; align-items:center; gap:12px; border:1px solid rgba(250,247,241,0.45); color:var(--ivory); background:transparent; padding:14px 22px; border-radius:2px; font:inherit; font-size:14px; cursor:pointer; transition:background .3s ease, border-color .3s ease, color .3s ease;}
+  .enquire-btn::after{content:'->'; color:var(--gold); transition:transform .3s ease;}
+  .enquire-btn:hover{background:var(--ivory); border-color:var(--ivory); color:var(--ink);}
+  .enquire-btn:hover::after{transform:translateX(4px);}
+  .enquire-btn:focus-visible{outline:2px solid var(--gold); outline-offset:4px;}
+  .enquiry-modal{position:fixed; inset:0; z-index:200; display:grid; place-items:center; padding:24px; background:rgba(20,23,33,0.62); opacity:0; visibility:hidden; transition:opacity .3s ease, visibility .3s ease;}
+  .enquiry-modal.open{opacity:1; visibility:visible;}
+  .enquiry-panel{position:relative; width:min(100%, 560px); max-height:calc(100vh - 48px); overflow:auto; padding:42px; background:var(--ivory); color:var(--ink); box-shadow:0 24px 70px rgba(10,12,18,0.3); transform:translateY(14px); transition:transform .3s ease;}
+  .enquiry-modal.open .enquiry-panel{transform:translateY(0);}
+  .enquiry-panel .kicker{color:var(--blush-deep); margin-bottom:10px;}
+  .enquiry-panel h2{color:var(--ink); font-size:clamp(28px,4vw,40px); margin:0 40px 10px 0; font-weight:400;}
+  .enquiry-panel > p{color:var(--text-soft); font-size:14px; margin:0 0 28px;}
+  .enquiry-close{position:absolute; top:20px; right:20px; width:36px; height:36px; border:1px solid var(--line); border-radius:50%; background:transparent; color:var(--ink); font-size:23px; line-height:1; cursor:pointer;}
+  .enquiry-close:hover{background:var(--paper);}
+  .enquiry-close:focus-visible{outline:2px solid var(--blush-deep); outline-offset:3px;}
+  .enquiry-form{display:grid; gap:18px; text-align:left;}
+  .enquiry-form[hidden]{display:none;}
+  .enquiry-form label{display:grid; gap:7px; color:var(--ink); font-size:13px; font-weight:600;}
+  .enquiry-form input,.enquiry-form select{width:100%; padding:13px 14px; border:1px solid rgba(28,33,48,0.2); border-radius:2px; background:#fff; color:var(--ink); font:inherit; font-size:15px;}
+  .enquiry-form input:focus,.enquiry-form select:focus{outline:2px solid var(--blush); outline-offset:1px; border-color:var(--blush-deep);}
+  .enquiry-form button[type="submit"]{border:0; border-radius:2px; background:var(--ink); color:var(--ivory); padding:14px 20px; font:inherit; font-size:14px; cursor:pointer; transition:background .3s ease;}
+  .enquiry-form button[type="submit"]:disabled{opacity:0.6; cursor:wait;}
+  .enquiry-form button[type="submit"]:hover{background:var(--blush-deep);}
+  .enquiry-form button[type="submit"]:focus-visible{outline:2px solid var(--blush-deep); outline-offset:3px;}
+  .enquiry-form-status{min-height:20px; color:var(--blush-deep); font-size:13px;}
+  .enquiry-success[hidden]{display:none;}
+  .enquiry-success{text-align:center;}
+  .enquiry-success-mark{width:54px; height:54px; display:grid; place-items:center; margin:0 auto 18px; border-radius:50%; background:#2f8f65; color:#fff; font-size:30px; line-height:1;}
+  .enquiry-success h3{font-family:'Fraunces',serif; font-size:28px; font-weight:400; color:var(--ink); margin-bottom:8px;}
+  .enquiry-success > p{color:var(--text-soft); font-size:14px; margin-bottom:18px;}
+  .enquiry-summary{border-top:1px solid var(--line); margin:0; text-align:left;}
+  .enquiry-summary div{display:grid; grid-template-columns:130px 1fr; gap:12px; padding:9px 0; border-bottom:1px solid var(--line); font-size:13px;}
+  .enquiry-summary dt{color:var(--text-soft);}
+  .enquiry-summary dd{color:var(--ink); font-weight:600; overflow-wrap:anywhere;}
 
   footer{
     background:var(--ink); color:rgba(250,247,241,0.55); padding:30px 0;
@@ -320,6 +364,7 @@
     .terms-grid .term-item:nth-child(2){border-top:1px solid var(--line);}
     .wrap{padding:0 24px;}
     .section{padding:80px 0;}
+    .enquiry-panel{padding:34px 24px 26px;}
   }
 </style>
 </head>
@@ -347,7 +392,10 @@
 
 <div class="menu-overlay" id="menuOverlay"></div>
 <aside class="menu-drawer" id="menuDrawer" aria-label="Mobile navigation" aria-hidden="true">
-  <h2>Explore</h2>
+  <div class="menu-drawer-head">
+    <h2>Explore</h2>
+    <button class="menu-close" type="button" aria-label="Close menu">&times;</button>
+  </div>
   <ul>
     <li><a href="#portfolio">Portfolio</a></li>
     <li><a href="#plans">Plans &amp; Pricing</a></li>
@@ -356,7 +404,7 @@
 </aside>
 
 <section class="hero">
-  <img class="hero-img" src="images/NJV03997.jpg" alt="A quiet family portrait moment">
+  <img class="hero-img" src="images/hero/hero.jpeg" alt="A quiet family portrait moment">
   <div class="wrap">
     <div class="hero-content">
       <div class="hero-eyebrow">Portrait &amp; Milestone Photography</div>
@@ -373,7 +421,7 @@
 <section class="section" id="story">
   <div class="wrap story">
     <div class="story-img">
-      <img src="https://picsum.photos/seed/nevjon-founder-2026/900/1100" alt="The studio's founder photographing a family">
+      <img src="images/story/NJV04889_Edited.jpeg" alt="The studio's founder photographing a family">
     </div>
     <div class="story-text">
       <div class="kicker">Why the name</div>
@@ -682,8 +730,71 @@
       <a href="mailto:hello@nevinjonathanphotography.com" class="btn btn-solid">hello@nevinjonathanphotography.com</a>
       <a href="tel:+15550123456" class="btn btn-outline">+1 (555) 012-3456</a>
     </div>
+    <div class="enquire-wrap">
+      <span class="enquire-label">Have a date in mind?</span>
+      <button class="enquire-btn" type="button" id="openEnquiry">Make an enquiry</button>
+    </div>
   </div>
 </section>
+
+<div class="enquiry-modal" id="enquiryModal" aria-hidden="true">
+  <div class="enquiry-panel" role="dialog" aria-modal="true" aria-labelledby="enquiryTitle">
+    <button class="enquiry-close" type="button" id="closeEnquiry" aria-label="Close enquiry form">&times;</button>
+    <div class="kicker">Start a conversation</div>
+    <h2 id="enquiryTitle">Tell us a little about you.</h2>
+    <p>We will get back to you within one business day.</p>
+    <form class="enquiry-form" id="enquiryForm" action="https://formspree.io/f/xrpbqlra" method="POST">
+      <label for="enquiryName">Name (First &amp; Last) <span aria-hidden="true">*</span>
+        <input id="enquiryName" name="name" type="text" autocomplete="name" required>
+      </label>
+      <label for="enquiryEmail">Email-ID <span aria-hidden="true">*</span>
+        <input id="enquiryEmail" name="email" type="email" autocomplete="email" required>
+      </label>
+      <label for="enquiryPhone">Contact num <span>(Optional)</span>
+        <input id="enquiryPhone" name="phone" type="tel" autocomplete="tel">
+      </label>
+      <label for="enquiryDate">Date Needed <span aria-hidden="true">*</span>
+        <input id="enquiryDate" name="date" type="date" required>
+      </label>
+      <label for="enquiryTime">Preferred time for session <span>(Optional)</span>
+        <select id="enquiryTime" name="preferred_time">
+          <option value="">Select a preferred time</option>
+          <option value="Early morning - 7:00 AM to 9:00 AM">Early morning - 7:00 AM to 9:00 AM</option>
+          <option value="Morning - 9:00 AM to 12:00 PM">Morning - 9:00 AM to 12:00 PM</option>
+          <option value="Afternoon - 12:00 PM to 3:00 PM">Afternoon - 12:00 PM to 3:00 PM</option>
+          <option value="Golden hour - 3:00 PM to 6:00 PM">Golden hour - 3:00 PM to 6:00 PM</option>
+          <option value="Flexible">Flexible</option>
+        </select>
+      </label>
+      <label for="enquirySession">Type of session <span aria-hidden="true">*</span>
+        <select id="enquirySession" name="session_type" required>
+          <option value="">Select a session type</option>
+          <option value="Newborn">Newborn</option>
+          <option value="Maternity">Maternity</option>
+          <option value="Family">Family</option>
+          <option value="Kids and milestone">Kids and milestone</option>
+          <option value="Wedding">Wedding</option>
+          <option value="Corporate and events">Corporate and events</option>
+        </select>
+      </label>
+      <button type="submit" id="submitEnquiry">Send enquiry</button>
+      <p class="enquiry-form-status" id="enquiryFormStatus" role="alert" hidden></p>
+    </form>
+    <div class="enquiry-success" id="enquirySuccess" role="status" hidden>
+      <div class="enquiry-success-mark" aria-hidden="true">&#10003;</div>
+      <h3>Thank you for submitting the form.</h3>
+      <p>Our team will reach out to you at the earliest. Here is a summary of your enquiry:</p>
+      <dl class="enquiry-summary">
+        <div><dt>Name</dt><dd id="summaryName"></dd></div>
+        <div><dt>Email-ID</dt><dd id="summaryEmail"></dd></div>
+        <div><dt>Contact number</dt><dd id="summaryPhone"></dd></div>
+        <div><dt>Date needed</dt><dd id="summaryDate"></dd></div>
+        <div><dt>Preferred time</dt><dd id="summaryTime"></dd></div>
+        <div><dt>Session type</dt><dd id="summarySession"></dd></div>
+      </dl>
+    </div>
+  </div>
+</div>
 
 <footer>
   <div class="wrap" style="display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px;">
@@ -781,6 +892,16 @@
   const menuToggle = document.querySelector('.nav-toggle');
   const menuDrawer = document.getElementById('menuDrawer');
   const menuOverlay = document.getElementById('menuOverlay');
+  const menuClose = document.querySelector('.menu-close');
+  const openEnquiry = document.getElementById('openEnquiry');
+  const enquiryModal = document.getElementById('enquiryModal');
+  const closeEnquiry = document.getElementById('closeEnquiry');
+  const enquiryForm = document.getElementById('enquiryForm');
+  const enquirySuccess = document.getElementById('enquirySuccess');
+  const submitEnquiry = document.getElementById('submitEnquiry');
+  const enquiryFormStatus = document.getElementById('enquiryFormStatus');
+  const enquiryDate = document.getElementById('enquiryDate');
+  enquiryDate.min = new Date().toISOString().split('T')[0];
 
   const closeMenu = () => {
     document.body.classList.remove('menu-open');
@@ -800,10 +921,68 @@
     if (document.body.classList.contains('menu-open')) closeMenu();
     else openMenu();
   });
+  menuClose.addEventListener('click', closeMenu);
   menuOverlay.addEventListener('click', closeMenu);
   menuDrawer.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMenu));
+
+  const closeEnquiryModal = () => {
+    enquiryModal.classList.remove('open');
+    enquiryModal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  };
+
+  openEnquiry.addEventListener('click', () => {
+    enquiryForm.reset();
+    enquiryForm.hidden = false;
+    enquirySuccess.hidden = true;
+    submitEnquiry.disabled = false;
+    submitEnquiry.textContent = 'Send enquiry';
+    enquiryFormStatus.hidden = true;
+    enquiryFormStatus.textContent = '';
+    enquiryModal.classList.add('open');
+    enquiryModal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    document.getElementById('enquiryName').focus();
+  });
+  closeEnquiry.addEventListener('click', closeEnquiryModal);
+  enquiryModal.addEventListener('click', event => {
+    if (event.target === enquiryModal) closeEnquiryModal();
+  });
+  enquiryForm.addEventListener('submit', async event => {
+    event.preventDefault();
+    const formData = new FormData(enquiryForm);
+    formData.append('_subject', 'New photography enquiry');
+    submitEnquiry.disabled = true;
+    submitEnquiry.textContent = 'Sending...';
+    enquiryFormStatus.hidden = true;
+
+    try {
+      const response = await fetch(enquiryForm.action, {
+        method: 'POST',
+        body: formData,
+        headers: {Accept: 'application/json'}
+      });
+
+      if (!response.ok) throw new Error('Formspree submission failed');
+
+      document.getElementById('summaryName').textContent = formData.get('name');
+      document.getElementById('summaryEmail').textContent = formData.get('email');
+      document.getElementById('summaryPhone').textContent = formData.get('phone') || 'Not provided';
+      document.getElementById('summaryDate').textContent = formData.get('date');
+      document.getElementById('summaryTime').textContent = formData.get('preferred_time') || 'No preference';
+      document.getElementById('summarySession').textContent = formData.get('session_type');
+      enquiryForm.hidden = true;
+      enquirySuccess.hidden = false;
+    } catch (error) {
+      submitEnquiry.disabled = false;
+      submitEnquiry.textContent = 'Send enquiry';
+      enquiryFormStatus.textContent = 'We could not send your enquiry. Please try again.';
+      enquiryFormStatus.hidden = false;
+    }
+  });
   document.addEventListener('keydown', event => {
     if (event.key === 'Escape') closeMenu();
+    if (event.key === 'Escape' && enquiryModal.classList.contains('open')) closeEnquiryModal();
   });
 </script>
 
